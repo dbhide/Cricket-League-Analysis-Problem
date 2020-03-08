@@ -11,9 +11,14 @@ import java.util.*;
 
 public class CricketAnalyser {
     List<MostRunsCSV> IPLCSVList;
+    Map<SortedField,Comparator<MostRunsCSV>> sortedMap;
 
     public CricketAnalyser() {
         this.IPLCSVList = new ArrayList<>();
+
+        this.sortedMap = new HashMap<>();
+        this.sortedMap.put(SortedField.AVERAGE,Comparator.comparing(IplFields -> IplFields.battingAverage));
+        this.sortedMap.put(SortedField.STRIKERATE,Comparator.comparing(IplFields -> IplFields.strikeRate));
     }
 
     public int getCricketDataFile(String csvFilePath) {
@@ -35,13 +40,12 @@ public class CricketAnalyser {
         }
     }
 
-    public String getSortedCricketData() {
-
+    public String getSortedCricketData(SortedField sortedField) {
         if(IPLCSVList == null || IPLCSVList.size() == 0){
             throw new CricketAnalyserException("No Data",CricketAnalyserException.ExceptionType.CRICKET_DATA_NOT_FOUND);
         }
         Comparator<MostRunsCSV> IplComparator = Comparator.comparing(IPL -> IPL.battingAverage);
-        this.sort(IPLCSVList,IplComparator);
+        this.sort(IPLCSVList,this.sortedMap.get(sortedField));
         Collections.reverse(IPLCSVList);
         String sortedStateCensus=new Gson().toJson(IPLCSVList);
         return sortedStateCensus;
