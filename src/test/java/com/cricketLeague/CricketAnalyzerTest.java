@@ -41,6 +41,15 @@ public class CricketAnalyzerTest {
         cricketAnalyser.getCricketDataFile(IPL_2019_MOST_RUNS_FILE_PATH);
         String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.MAXIMUM_HIT);
         MostRunsCSV[] mostRunCsv = new Gson().fromJson(sortedCricketData, MostRunsCSV[].class);
-        Assert.assertEquals(204.81,mostRunCsv[0].strikeRate, 0.0);
+        Assert.assertEquals("Andre Russell",mostRunCsv[0].player);
+    }
+
+    @Test
+    public void givenIPLMostRunsCSVFile_When_MaximumAverage_Returns_BestStrikeRate() {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser();
+        cricketAnalyser.getCricketDataFile(IPL_2019_MOST_RUNS_FILE_PATH);
+        String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.AVERAGE);
+        MostRunsCSV[] mostRunCsv = new Gson().fromJson(sortedCricketData, MostRunsCSV[].class);
+        Assert.assertEquals(134.62,mostRunCsv[0].strikeRate, 0.0);
     }
 }

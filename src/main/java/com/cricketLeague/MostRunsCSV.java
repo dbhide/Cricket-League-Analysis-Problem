@@ -3,6 +3,10 @@ package com.cricketLeague;
 import com.opencsv.bean.CsvBindByName;
 
 public class MostRunsCSV {
+
+    @CsvBindByName(column = "PLAYER",required = true)
+    public String player;
+
     @CsvBindByName(column = "Avg",required = true)
     public double battingAverage;
 
