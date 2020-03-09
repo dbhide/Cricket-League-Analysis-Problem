@@ -19,6 +19,7 @@ public class CricketAnalyser {
         this.sortedMap = new HashMap<>();
         this.sortedMap.put(SortedField.AVERAGE,Comparator.comparing(IplFields -> IplFields.battingAverage));
         this.sortedMap.put(SortedField.STRIKERATE,Comparator.comparing(IplFields -> IplFields.strikeRate));
+        this.sortedMap.put(SortedField.MAXIMUM_HIT, Comparator.comparing(IplFields -> IplFields.fours + IplFields.sixes));
     }
 
     public int getCricketDataFile(String csvFilePath) {
