@@ -39,7 +39,7 @@ public class CricketAnalyzerTest {
     public void givenIPLMostRunsCSVFile_ReturnsCricketer_WhoHasMaximumStrikeRateWithMaximum4sAnd6s() {
         CricketAnalyser cricketAnalyser = new CricketAnalyser();
         cricketAnalyser.getCricketDataFile(IPL_2019_MOST_RUNS_FILE_PATH);
-        String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.MAXIMUM_HIT);
+        String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.BESTSTRIKE);
         MostRunsCSV[] mostRunCsv = new Gson().fromJson(sortedCricketData, MostRunsCSV[].class);
         Assert.assertEquals("Andre Russell",mostRunCsv[0].player);
     }
@@ -48,8 +48,8 @@ public class CricketAnalyzerTest {
     public void givenIPLMostRunsCSVFile_When_MaximumAverage_Returns_BestStrikeRate() {
         CricketAnalyser cricketAnalyser = new CricketAnalyser();
         cricketAnalyser.getCricketDataFile(IPL_2019_MOST_RUNS_FILE_PATH);
-        String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.AVERAGE);
+        String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.AVGSTRIKE);
         MostRunsCSV[] mostRunCsv = new Gson().fromJson(sortedCricketData, MostRunsCSV[].class);
-        Assert.assertEquals(134.62,mostRunCsv[0].strikeRate, 0.0);
+        Assert.assertEquals("MS Dhoni",mostRunCsv[0].player);
     }
 }

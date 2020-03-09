@@ -18,4 +18,7 @@ public class MostRunsCSV {
 
     @CsvBindByName(column = "6s",required = true)
     public int sixes;
+
+    @CsvBindByName(column = "Runs",required = true)
+    public int runs;
 }
