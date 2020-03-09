@@ -23,6 +23,8 @@ public class CricketAnalyser {
         this.sortedMap.put(SortedField.STRIKERATE,Comparator.comparing(IplFields -> IplFields.strikeRate));
         this.sortedMap.put(SortedField.MAXIMUM_HIT, Comparator.comparing(IplFields -> IplFields.fours + IplFields.sixes));
         this.sortedMap.put(SortedField.BESTSTRIKE, new BatsmanComparator().thenComparing(res -> res.strikeRate));
+        Comparator<MostRunsCSV> maxRuns = Comparator.comparing(res -> res.runs);
+        this.sortedMap.put(SortedField.MAXRUNS, maxRuns.thenComparing(res -> res.battingAverage));
     }
 
     public int getCricketDataFile(String csvFilePath) {
