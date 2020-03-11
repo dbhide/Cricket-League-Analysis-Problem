@@ -33,6 +33,9 @@ public class CricketAnalyser {
         this.sortedMap.put(SortedField.MAXIMUM_HIT, Comparator.comparing(IplFields -> IplFields.fours + IplFields.sixes));
         this.sortedMap.put(SortedField.BESTSTRIKE, new BatsmanComparator().thenComparing(res -> res.strikeRate));
 
+        Comparator<CricketDTO> avgBowl = Comparator.comparing(res -> res.average);
+        this.sortedMap.put(SortedField.BOWLING_AVERAGE, avgBowl.thenComparing(res -> res.strikeRate));
+
         Comparator<CricketDTO> maxRuns = Comparator.comparing(res -> res.runs);
         this.sortedMap.put(SortedField.MAXRUNS, maxRuns.thenComparing(res -> res.average));
     }
