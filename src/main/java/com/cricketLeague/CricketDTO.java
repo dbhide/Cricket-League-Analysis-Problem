@@ -10,6 +10,7 @@ public class CricketDTO {
     public int fiveWickets;
     public String player;
     public double economy;
+    public int totalWickets;
 
     public CricketDTO(MostRunsCSV mostRunsCSV) {
        runs = mostRunsCSV.runs;
@@ -28,5 +29,6 @@ public class CricketDTO {
         strikeRate=mostWicketsCSV.strikeRate;
         player=mostWicketsCSV.bowlerName;
         economy = mostWicketsCSV.economy;
+        totalWickets = mostWicketsCSV.totalWickets;
     }
 }

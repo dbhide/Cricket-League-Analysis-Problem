@@ -110,4 +110,13 @@ public class CricketAnalyzerTest {
         CricketDTO[] mostWicketsCsv = new Gson().fromJson(sortedCricketData, CricketDTO[].class);
         Assert.assertEquals("Krishnappa Gowtham",mostWicketsCsv[0].player);
     }
+
+    @Test
+    public void givenIPLMostWicketsCSVFile_WhenSortedOnMaximumWickets_ReturnsBestAverage() throws IOException {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser();
+        cricketAnalyser.getCricketDataFile(CricketAnalyser.IPL.WICKETS, IPL_2019_MOST_WICKETS_FILE_PATH);
+        String sortedCricketData = cricketAnalyser.getSortedCricketData(SortedField.MAXIMUM_WICKETS);
+        CricketDTO[] mostWicketsCsv = new Gson().fromJson(sortedCricketData, CricketDTO[].class);
+        Assert.assertEquals("Imran Tahir",mostWicketsCsv[0].player);
+    }
 }

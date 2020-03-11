@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 public class CricketAnalyser {
@@ -35,6 +36,9 @@ public class CricketAnalyser {
 
         Comparator<CricketDTO> avgBowl = Comparator.comparing(res -> res.average);
         this.sortedMap.put(SortedField.BOWLING_AVERAGE, avgBowl.thenComparing(res -> res.strikeRate));
+
+        Comparator<CricketDTO> maxWickets = Comparator.comparing(res -> res.totalWickets);
+        this.sortedMap.put(SortedField.MAXIMUM_WICKETS, maxWickets.thenComparing(res -> res.average));
 
         Comparator<CricketDTO> maxRuns = Comparator.comparing(res -> res.runs);
         this.sortedMap.put(SortedField.MAXRUNS, maxRuns.thenComparing(res -> res.average));

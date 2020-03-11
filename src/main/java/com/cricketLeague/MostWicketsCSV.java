@@ -20,6 +20,10 @@ public class MostWicketsCSV {
 
     @CsvBindByName(column = "Econ",required = true)
     public double economy;
+
+    @CsvBindByName(column = "Wkts",required = true)
+    public int totalWickets;
+
 }
 
 
