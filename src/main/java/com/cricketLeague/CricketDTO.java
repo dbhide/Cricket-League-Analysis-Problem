@@ -24,5 +24,6 @@ public class CricketDTO {
         fourWickets = mostWicketsCSV.fourWickets;
         fiveWickets = mostWicketsCSV.fiveWickets;
         player=mostWicketsCSV.bowlerName;
+        strikeRate=mostWicketsCSV.strikeRate;
     }
 }
