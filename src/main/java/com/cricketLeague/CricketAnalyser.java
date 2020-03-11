@@ -25,11 +25,14 @@ public class CricketAnalyser {
 
         Comparator<CricketDTO> avgStrike = Comparator.comparing(res -> res.average);
         this.sortedMap.put(SortedField.AVGSTRIKE, avgStrike.thenComparing(res -> res.strikeRate));
+
         this.sortedMap.put(SortedField.AVERAGE, Comparator.comparing(IplFields -> IplFields.average));
         this.sortedMap.put(SortedField.STRIKERATE, Comparator.comparing(IplFields -> IplFields.strikeRate));
         this.sortedMap.put(SortedField.ECONOMY, Comparator.comparing(IplFields -> IplFields.economy));
+        this.sortedMap.put(SortedField.STRIKE_WITH_WICKETS, new BowlerComparator().thenComparing(IplFields -> IplFields.strikeRate));
         this.sortedMap.put(SortedField.MAXIMUM_HIT, Comparator.comparing(IplFields -> IplFields.fours + IplFields.sixes));
         this.sortedMap.put(SortedField.BESTSTRIKE, new BatsmanComparator().thenComparing(res -> res.strikeRate));
+
         Comparator<CricketDTO> maxRuns = Comparator.comparing(res -> res.runs);
         this.sortedMap.put(SortedField.MAXRUNS, maxRuns.thenComparing(res -> res.average));
     }
